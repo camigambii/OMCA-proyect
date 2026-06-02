@@ -9,7 +9,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 
 # NO OLVIDAR
-miWebCam = cv2.VideoCapture(0)
+miWebCam = cv2.VideoCapture(1)
 
 
 
