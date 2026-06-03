@@ -19,8 +19,8 @@ def obtener_carrito():
 def calcular_total():
     cuentaTotal=0
     for producto in config.USUARIO_ACTIVO.carrito:
-        total+=producto.precio
-    return round(total,2)
+        cuentaTotal+=producto.precio
+    return round(cuentaTotal,2)
 
 def confirmarCompra():
     for producto in config.USUARIO_ACTIVO.carrito:
