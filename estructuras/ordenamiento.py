@@ -13,10 +13,28 @@ def obtener_valor(producto, clave):
     elif clave == "categoria":
         return producto.categoria.lower()
 
+    elif clave == "colorimetria":
+        return producto.obtener_colorimetria()
+
+    elif clave == "gama":
+        return producto.obtener_gama()
+
+    elif clave == "tipo":
+        return producto.obtener_tipo_producto()
+
+    elif clave == "color_r":
+        return producto.color_r
+
+    elif clave == "color_g":
+        return producto.color_g
+
+    elif clave == "color_b":
+        return producto.color_b
+
     else:
+
         raise ValueError(
-            "Clave inválida. Usa: "
-            "'precio', 'nombre', 'id' o 'categoria'"
+            "Clave inválida"
         )
 
 
