@@ -1,29 +1,292 @@
 class Producto:
+    """
+    Representa un producto del inventario de maquillaje.
 
-    def __init__(self, id, nombre, categoria, precio, stock, ruta_imagen):
-        categorias_validas = ["Labiales", "Rubores", "Sombras", "Bronzers"]
+    Formato:
+        [C][G][T][NN]
 
-        if categoria not in categorias_validas:
-            raise ValueError(
-                f"La categoría debe ser una de: {categorias_validas}"
-            )
+    Ejemplo:
+        31501
+
+    C -> colorimetría:
+        1 = cálido
+        2 = frío
+        3 = universal
+
+    G -> gama:
+        1 = barato     ($100 - $300)
+        2 = intermedio ($400 - $600)
+        3 = caro       ($700 - $1100)
+
+    T -> tipo/categoría interna:
+        1 = bronzer
+        2 = gloss
+        3 = paleta
+        4 = rubor
+        5 = producto universal
+
+    NN -> consecutivo:
+        01, 02, 03...
+
+    EJEMPLO
+  
+
+    31501
+
+    3 -> universal
+    1 -> barato
+    5 -> producto universal
+    01 -> consecutivo
+    """
+
+    COLORIMETRIAS = {
+        1: "calido",
+        2: "frio",
+        3: "universal"
+    }
+
+    GAMAS = {
+        1: "barato",
+        2: "intermedio",
+        3: "caro"
+    }
+
+    TIPOS_PRODUCTO = {
+        1: "bronzer",
+        2: "gloss",
+        3: "paleta",
+        4: "rubor",
+        5: "producto universal"
+    }
+
+    CATEGORIAS_VALIDAS = [
+        "accesorios",
+        "bronzer",
+        "gloss",
+        "paleta",
+        "rubor",
+        "producto universal"
+    ]
+
+
+    def __init__(
+        self,
+        id,
+        nombre,
+        categoria,
+        precio,
+        stock,
+        ruta_imagen,
+        color_r,
+        color_g,
+        color_b
+    ):
+
+
+        self.validar_id(id)
+
+        self.validar_precio(precio)
+
+        self.validar_stock(stock)
+
+        self.validar_categoria(categoria)
+
+        self.validar_rgb(
+            color_r,
+            color_g,
+            color_b
+        )
+
 
         self.id = id
+
         self.nombre = nombre
-        self.categoria = categoria
-        self.precio = precio
-        self.stock = stock
+
+        self.categoria = categoria.lower()
+
+        self.precio = float(precio)
+
+        self.stock = int(stock)
+
         self.ruta_imagen = ruta_imagen
 
+        self.color_r = int(color_r)
+
+        self.color_g = int(color_g)
+
+        self.color_b = int(color_b)
+
+    @staticmethod
+    def validar_id(id_producto):
+        """
+        Valida la estructura:
+
+        [C][G][T][NN]
+
+        Ejemplo:
+            31501
+        """
+
+        id_str = str(id_producto)
+
+        # Debe contener solo números
+        if not id_str.isdigit():
+
+            raise ValueError(
+                "El ID debe contener solo números"
+            )
+
+        # Debe tener exactamente 5 dígitos
+        if len(id_str) != 5:
+
+            raise ValueError(
+                "El ID debe tener exactamente 5 dígitos"
+            )
+
+
+        colorimetria = int(id_str[0])
+
+        gama = int(id_str[1])
+
+        tipo = int(id_str[2])
+
+
+        if colorimetria not in [1, 2, 3]:
+
+            raise ValueError(
+                "Código de colorimetría inválido "
+                "(1=cálido, 2=frío, 3=universal)"
+            )
+
+
+        if gama not in [1, 2, 3]:
+
+            raise ValueError(
+                "Código de gama inválido "
+                "(1=barato, 2=intermedio, 3=caro)"
+            )
+
+
+        if tipo not in [1, 2, 3, 4, 5]:
+
+            raise ValueError(
+                "Código de tipo inválido "
+                "(1=bronzer, 2=gloss, "
+                "3=paleta, 4=rubor, "
+                "5=producto universal)"
+            )
+
+
+    @staticmethod
+    def validar_precio(precio):
+
+        if precio < 0:
+
+            raise ValueError(
+                "El precio no puede ser negativo"
+            )
+
+
+    @staticmethod
+    def validar_stock(stock):
+
+        if stock < 0:
+
+            raise ValueError(
+                "El stock no puede ser negativo"
+            )
+
+
+    def validar_categoria(self, categoria):
+
+        if categoria.lower() not in self.CATEGORIAS_VALIDAS:
+
+            raise ValueError(
+                "Categoría inválida"
+            )
+
+
+    @staticmethod
+    def validar_rgb(r, g, b):
+
+        colores = [r, g, b]
+
+        for valor in colores:
+
+            if not isinstance(valor, int):
+
+                raise ValueError(
+                    "RGB debe ser entero"
+                )
+
+            if valor < 0 or valor > 255:
+
+                raise ValueError(
+                    "RGB debe estar entre 0 y 255"
+                )
+
+    def obtener_colorimetria(self):
+        """
+        Retorna:
+        calido, frio o universal
+        """
+
+        codigo = int(str(self.id)[0])
+
+        return self.COLORIMETRIAS[codigo]
+
+    def obtener_gama(self):
+        """
+        Retorna:
+        barato, intermedio o caro
+        """
+
+        codigo = int(str(self.id)[1])
+
+        return self.GAMAS[codigo]
+
+    def obtener_tipo_producto(self):
+        """
+        Retorna el tipo interno.
+        """
+
+        codigo = int(str(self.id)[2])
+
+        return self.TIPOS_PRODUCTO[codigo]
+
+    def obtener_consecutivo(self):
+        """
+        Retorna:
+        01, 02, 03...
+        """
+
+        return str(self.id)[3:5]
+
+
+    def obtener_rgb(self):
+
+        return (
+            self.color_r,
+            self.color_g,
+            self.color_b
+        )
+
+
     def __str__(self):
+
         return (
             f"ID: {self.id} | "
             f"Nombre: {self.nombre} | "
             f"Categoría: {self.categoria} | "
             f"Precio: ${self.precio:.2f} | "
-            f"Stock: {self.stock}"
+            f"Stock: {self.stock} | "
+            f"Colorimetría: {self.obtener_colorimetria()} | "
+            f"Gama: {self.obtener_gama()} | "
+            f"Tipo: {self.obtener_tipo_producto()} | "
+            f"RGB: ({self.color_r}, "
+            f"{self.color_g}, "
+            f"{self.color_b})"
         )
-
 
 class NodoArbol:
 
