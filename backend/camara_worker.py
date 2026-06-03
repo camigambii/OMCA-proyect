@@ -145,10 +145,10 @@ with mp_face_mesh.FaceMesh(
         
         if results.multi_face_landmarks:
             for face_landmarks in results.multi_face_landmarks:
-                """aplicarLabial(frame, face_landmarks, color_bgr=(50, 50, 200), alpha=0.3)
+                aplicarLabial(frame, face_landmarks, color_bgr=(50, 50, 200), alpha=0.3)
                 aplicarRubor(frame, face_landmarks, color_bgr=(50, 50, 200), alpha=0.3)
                 aplicarSombra(frame, face_landmarks, color_bgr=(50, 50, 200), alpha=0.3)
-                aplicarContour(frame, face_landmarks, color_bgr=(30, 80, 130), alpha=0.4)"""
+                aplicarContour(frame, face_landmarks, color_bgr=(30, 80, 130), alpha=0.4)
                 
 
 
