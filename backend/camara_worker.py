@@ -124,7 +124,10 @@ with mp_face_mesh.FaceMesh(
     static_image_mode=False,
     max_num_faces=1,
     min_detection_confidence=0.5,
-    min_tracking_confidence=0.5
+    min_tracking_confidence=0.5,
+    refine_landmarks=True
+
+    
 ) as face_mesh:
         
     while miWebCam.isOpened():
@@ -132,28 +135,32 @@ with mp_face_mesh.FaceMesh(
         
         if not ret:
             break
-            
+    
         frame = cv2.flip(frame, 1)
         image_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         results = face_mesh.process(image_rgb)
         
         if results.multi_face_landmarks:
             for face_landmarks in results.multi_face_landmarks:
-                aplicarLabial(frame, face_landmarks, color_bgr=(50, 50, 200), alpha=0.3)
+                """aplicarLabial(frame, face_landmarks, color_bgr=(50, 50, 200), alpha=0.3)
                 aplicarRubor(frame, face_landmarks, color_bgr=(50, 50, 200), alpha=0.3)
                 aplicarSombra(frame, face_landmarks, color_bgr=(50, 50, 200), alpha=0.3)
-                aplicarContour(frame, face_landmarks, color_bgr=(30, 80, 130), alpha=0.4)
+                aplicarContour(frame, face_landmarks, color_bgr=(30, 80, 130), alpha=0.4)"""
                 
-            """NO LO BORRES NOOOOOO, POR SI  OCUPO DESPUES
+
+
+
+            """#NO LO BORRES NOOOOOO, POR SI  OCUPO DESPUES
             for face_landmarks in results.multi_face_landmarks:
                 for i, landmark in enumerate(face_landmarks.landmark):
                     alto, ancho, _ = frame.shape
                     x = int(landmark.x * ancho)
                     y = int(landmark.y * alto)
                     # Dibuja el número del índice en color verde
-                    cv2.putText(frame, str(i), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.25, (0, 255, 0), 1)
-        cv2.imshow("Tester OMCA", frame)"""
-            
+                    cv2.putText(frame, str(i), (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.25, (0, 255, 0), 1)"""
+        
+        
+          
         cv2.imshow("Tester OMCA", frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
