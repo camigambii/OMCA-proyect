@@ -266,9 +266,9 @@ class Producto:
     def obtener_rgb(self):
 
         return (
-            self.color_r,
+            self.color_b,
             self.color_g,
-            self.color_b
+            self.color_r
         )
 
 

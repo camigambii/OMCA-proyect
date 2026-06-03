@@ -1,7 +1,10 @@
+#GONZAlez pacheco sfoai camila
 import cv2
 import numpy as np
 import mediapipe as mp
 from landmarks import FACE_ZONES
+
+
 #FORMULA GENERAL Resultado(x,y) = Original(x,y) \cdot (1 - \alpha_{mask}) + Maquillaje(x,y) \cdot \alpha_{mask}$
 
 mp_face_mesh = mp.solutions.face_mesh
@@ -31,7 +34,7 @@ def aplicarSombra(frame, face_landmarks, color_bgr, alpha):
     mask = np.zeros((alto, ancho), dtype=np.uint8)
     cv2.fillPoly(mask, [leftPoints], 255)
     cv2.fillPoly(mask, [rightPoints], 255)
-    mask = cv2.GaussianBlur(mask, (21, 21), 0) #impar para que no se vea como payaso
+    mask = cv2.GaussianBlur(mask, (21, 21), 0) #impar 
 
     alpha_mask = (mask / 255.0) * alpha
     alpha_mask_3c = cv2.merge([alpha_mask, alpha_mask, alpha_mask])
@@ -60,7 +63,7 @@ def aplicarRubor(frame, face_landmarks, color_bgr, alpha):
     mask = np.zeros((alto, ancho), dtype=np.uint8)
     cv2.fillPoly(mask, [left_points], 255)
     cv2.fillPoly(mask, [right_points], 255)
-    mask = cv2.GaussianBlur(mask, (51, 51), 0) #impar para que no se vea como payaso
+    mask = cv2.GaussianBlur(mask, (51, 51), 0) #impar 
     alpha_mask = (mask / 255.0) * alpha
     alpha_mask_3c = cv2.merge([alpha_mask, alpha_mask, alpha_mask])
     color_layer = np.full((alto, ancho, 3), color_bgr, dtype=np.uint8)

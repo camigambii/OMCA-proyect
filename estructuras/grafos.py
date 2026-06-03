@@ -1,4 +1,4 @@
-"""id :[COLORIMETRIA][][][][]"""
+#GONZAlez pacheco sfoai camila
 from collections import deque
 
 class Grafo:

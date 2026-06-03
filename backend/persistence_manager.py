@@ -1,6 +1,7 @@
+#GONZAlez pacheco sfoai camila
 import csv
 from estructuras.tabla_hash import Usuario
-
+from estructuras.arboles import Producto
 class PersistenceManager:
     def __init__(self,rutaUsuarios,rutaProductos):
         self.rutaUsuarios=rutaUsuarios
