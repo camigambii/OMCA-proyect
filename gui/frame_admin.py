@@ -31,11 +31,11 @@ class FrameAdmin(ctk.CTkFrame):
                               text_color="#1A1A1A")
         tabs.pack(fill="both", expand=True, padx=20, pady=(0, 16))
 
-        tabs.add("Inventario")
-        tabs.add("Usuarios")
+        tabs.add("📦  Inventario")
+        tabs.add("👤  Usuarios")
 
-        self._construir_inventario(tabs.tab("Inventario"))
-        self._construir_usuarios(tabs.tab("Usuarios"))
+        self._construir_inventario(tabs.tab("📦  Inventario"))
+        self._construir_usuarios(tabs.tab("👤  Usuarios"))
 
     # ════════════════════════════════════════════════════════════════════
     # PESTAÑA INVENTARIO
@@ -97,16 +97,16 @@ class FrameAdmin(ctk.CTkFrame):
 
         estilo_btn = {"font": ("Arimo", 12, "bold"), "height": 34, "corner_radius": 8}
 
-        ctk.CTkButton(fila4, text="Agregar Producto", fg_color="#27AE60", hover_color="#1e8449",
+        ctk.CTkButton(fila4, text="➕ Agregar Producto", fg_color="#27AE60", hover_color="#1e8449",
                       **estilo_btn, command=self._agregar_producto).pack(side="left", padx=(0, 8))
 
-        ctk.CTkButton(fila4, text="Agregar Stock", fg_color="#2980B9", hover_color="#1a6691",
+        ctk.CTkButton(fila4, text="📈 Agregar Stock", fg_color="#2980B9", hover_color="#1a6691",
                       **estilo_btn, command=self._agregar_stock).pack(side="left", padx=(0, 8))
 
-        ctk.CTkButton(fila4, text="Borrar Producto", fg_color="#c0392b", hover_color="#922b21",
+        ctk.CTkButton(fila4, text="🗑 Borrar Producto", fg_color="#c0392b", hover_color="#922b21",
                       **estilo_btn, command=self._borrar_producto).pack(side="left", padx=(0, 8))
 
-        ctk.CTkButton(fila4, text="Borrar Stock", fg_color="#e67e22", hover_color="#ca6f1e",
+        ctk.CTkButton(fila4, text="📉 Borrar Stock", fg_color="#e67e22", hover_color="#ca6f1e",
                       **estilo_btn, command=self._borrar_stock).pack(side="left", padx=(0, 8))
 
         # Búsqueda por ID
@@ -116,7 +116,7 @@ class FrameAdmin(ctk.CTkFrame):
         ctk.CTkLabel(fila5, text="Buscar por ID exacto:", font=("Arimo", 12), text_color="#555555").pack(side="left")
         self.entry_buscar_id = ctk.CTkEntry(fila5, width=100, height=32, placeholder_text="10001")
         self.entry_buscar_id.pack(side="left", padx=(4, 8))
-        ctk.CTkButton(fila5, text="Buscar", font=("Arimo", 12), height=32,
+        ctk.CTkButton(fila5, text="🔍 Buscar", font=("Arimo", 12), height=32,
                       fg_color="#555555", hover_color="#333333",
                       command=self._buscar_por_id).pack(side="left")
 
@@ -183,19 +183,19 @@ class FrameAdmin(ctk.CTkFrame):
             g = int(self.entry_g.get() or 0)
             b = int(self.entry_b.get() or 0)
         except ValueError:
-            self.lbl_msg_inv.configure(text="Datos inválidos", text_color="#c14b4f")
+            self.lbl_msg_inv.configure(text="⚠ Datos inválidos", text_color="#c14b4f")
             return
 
         from estructuras.arboles import Producto
         nodo = config.arbol_inventario.buscar(pid)
         if nodo is not None:
-            self.lbl_msg_inv.configure(text="ID ya existe", text_color="#c14b4f")
+            self.lbl_msg_inv.configure(text="⚠ ID ya existe", text_color="#c14b4f")
             return
 
         nuevo = Producto(pid, nombre, cat, precio, stock, ruta, b, g, r)
         config.arbol_inventario.insertar(nuevo)
         config.persistence_manager.guardarProductos(config.arbol_inventario)
-        self.lbl_msg_inv.configure(text="Producto agregado", text_color="#27AE60")
+        self.lbl_msg_inv.configure(text="✓ Producto agregado", text_color="#27AE60")
         self._refrescar_inventario()
 
     def _agregar_stock(self):
@@ -203,7 +203,7 @@ class FrameAdmin(ctk.CTkFrame):
             pid = int(self.entry_id.get())
             cantidad = int(self.entry_stock.get())
         except ValueError:
-            self.lbl_msg_inv.configure(text="ID y Stock requeridos", text_color="#c14b4f")
+            self.lbl_msg_inv.configure(text="⚠ ID y Stock requeridos", text_color="#c14b4f")
             return
         ok = inventario_ctrl.agregarStock(pid, cantidad)
         self.lbl_msg_inv.configure(
@@ -216,7 +216,7 @@ class FrameAdmin(ctk.CTkFrame):
         try:
             pid = int(self.entry_id.get())
         except ValueError:
-            self.lbl_msg_inv.configure(text="ID requerido", text_color="#c14b4f")
+            self.lbl_msg_inv.configure(text="⚠ ID requerido", text_color="#c14b4f")
             return
         ok = inventario_ctrl.borrarProducto(pid)
         self.lbl_msg_inv.configure(
@@ -230,11 +230,11 @@ class FrameAdmin(ctk.CTkFrame):
             pid = int(self.entry_id.get())
             cantidad = int(self.entry_stock.get())
         except ValueError:
-            self.lbl_msg_inv.configure(text="ID y Stock requeridos", text_color="#c14b4f")
+            self.lbl_msg_inv.configure(text="⚠ ID y Stock requeridos", text_color="#c14b4f")
             return
         ok = inventario_ctrl.borrarStock(pid, cantidad)
         self.lbl_msg_inv.configure(
-            text="✓ Stock reducido" if ok else "Stock insuficiente o no encontrado",
+            text="✓ Stock reducido" if ok else "⚠ Stock insuficiente o no encontrado",
             text_color="#27AE60" if ok else "#c14b4f"
         )
         self._refrescar_inventario()
@@ -243,14 +243,14 @@ class FrameAdmin(ctk.CTkFrame):
         try:
             pid = int(self.entry_buscar_id.get())
         except ValueError:
-            self.lbl_msg_inv.configure(text="ID inválido", text_color="#c14b4f")
+            self.lbl_msg_inv.configure(text="⚠ ID inválido", text_color="#c14b4f")
             return
         nodo = config.arbol_inventario.buscar(pid)
         if nodo is None:
-            self.lbl_msg_inv.configure(text="No encontrado", text_color="#c14b4f")
+            self.lbl_msg_inv.configure(text="⚠ No encontrado", text_color="#c14b4f")
         else:
             prod = nodo.producto
-            self.lbl_msg_inv.configure(text=f" {prod.nombre} — ${prod.precio:.2f} (Stock: {prod.stock})", text_color="#27AE60")
+            self.lbl_msg_inv.configure(text=f"✓ {prod.nombre} — ${prod.precio:.2f} (Stock: {prod.stock})", text_color="#27AE60")
 
     def _ordenar_inventario(self, opcion):
         lista = inventario_ctrl.obtenerTodosProductos()
