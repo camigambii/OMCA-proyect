@@ -54,29 +54,29 @@ class PersistenceManager:
                 nuevo_producto = Producto(id, nombre, categoria, precio, stock, ruta_imagen,color_b, color_g, color_r)
                 arbol.insertar(nuevo_producto)
 
-def guardarProductos(self,arbol):
-    lista_productos = arbol.obtener_lista_inorden()
-    with open(self.rutaProductos, mode='w', newline='', encoding='utf-8') as archivo:
-            
-            
-            nombres_columnas = ["id", "nombre", "categoria", "precio", "stock", "ruta_imagen", "color_r", "color_g", "color_b"]
-            
-            escritor = csv.DictWriter(archivo, fieldnames=nombres_columnas)
-            escritor.writeheader()
-            
-            
-            for producto in lista_productos:
-                escritor.writerow({
-                    "id": producto.id,
-                    "nombre": producto.nombre,
-                    "categoria": producto.categoria,
-                    "precio": producto.precio,
-                    "stock": producto.stock,
-                    "ruta_imagen": producto.ruta_imagen,
-                    # NOTA: Asegúrate de que los nombres de los atributos (.color_r, etc.) 
-                    # coincidan exactamente con cómo los guardaste dentro de tu clase Producto
-                    "color_r": producto.color_r,
-                    "color_g": producto.color_g,
-                    "color_b": producto.color_b
-                })
+    def guardarProductos(self,arbol):
+        lista_productos = arbol.obtener_lista_inorden()
+        with open(self.rutaProductos, mode='w', newline='', encoding='utf-8') as archivo:
                 
+                
+                nombres_columnas = ["id", "nombre", "categoria", "precio", "stock", "ruta_imagen", "color_r", "color_g", "color_b"]
+                
+                escritor = csv.DictWriter(archivo, fieldnames=nombres_columnas)
+                escritor.writeheader()
+                
+                
+                for producto in lista_productos:
+                    escritor.writerow({
+                        "id": producto.id,
+                        "nombre": producto.nombre,
+                        "categoria": producto.categoria,
+                        "precio": producto.precio,
+                        "stock": producto.stock,
+                        "ruta_imagen": producto.ruta_imagen,
+                        # NOTA: Asegúrate de que los nombres de los atributos (.color_r, etc.) 
+                        # coincidan exactamente con cómo los guardaste dentro de tu clase Producto
+                        "color_r": producto.color_r,
+                        "color_g": producto.color_g,
+                        "color_b": producto.color_b
+                    })
+                    

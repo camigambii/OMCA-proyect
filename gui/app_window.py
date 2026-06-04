@@ -7,9 +7,9 @@ import os
 # Importamos los frames (descomentarlos conforme los vayas creando)
 from gui.menu_principal import MenuPrincipal
 from gui.frame_gloss    import FrameGloss
-# from gui.frames.frame_rubor    import FrameRubor
-# from gui.frames.frame_paletas  import FramePaletas
-# from gui.frames.frame_bronzer  import FrameBronzer
+#from gui.frame_rubor    import FrameRubor
+#from gui.frame_paletas  import FramePaletas
+#from gui.frame_bronzer  import FrameBronzer
 # from gui.frames.frame_asesoria import FrameAsesoria
 from gui.frame_login import FrameLogin
 # from gui.frames.frame_admin    import FrameAdmin
@@ -188,12 +188,12 @@ class AppWindow(ctk.CTk):
         mapa = {
             "menu":     MenuPrincipal,
             "gloss":    FrameGloss,
-            # "rubor":    FrameRubor,
-            # "paletas":  FramePaletas,
-            # "bronzer":  FrameBronzer,
-            # "asesoria": FrameAsesoria,
+            #"rubor":    FrameRubor,
+            #"paletas":  FramePaletas,
+            #"bronzer":  FrameBronzer,
+            #"asesoria": FrameAsesoria,
             "login":    FrameLogin,
-            # "admin":    FrameAdmin,
+            #"admin":    FrameAdmin,
         }
 
         if nombre not in mapa:
