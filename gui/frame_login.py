@@ -35,6 +35,10 @@ class FrameLogin(ctk.CTkFrame):
             height=1100
         )
 
+        # =================================================
+        # REFERENCIA A APP
+        # =================================================
+
         self.app = app
 
         self.pack_propagate(False)
@@ -94,7 +98,7 @@ class FrameLogin(ctk.CTkFrame):
         )
 
         # =================================================
-        # USERNAME
+        # ENTRY USERNAME
         # =================================================
 
         self.username_entry = ctk.CTkEntry(
@@ -118,7 +122,7 @@ class FrameLogin(ctk.CTkFrame):
         )
 
         # =================================================
-        # PASSWORD
+        # ENTRY PASSWORD
         # =================================================
 
         self.password_entry = ctk.CTkEntry(
@@ -143,7 +147,7 @@ class FrameLogin(ctk.CTkFrame):
         )
 
         # =================================================
-        # CONFIRM PASSWORD
+        # ENTRY CONFIRM PASSWORD
         # =================================================
 
         self.confirm_password_entry = (
@@ -168,10 +172,10 @@ class FrameLogin(ctk.CTkFrame):
         )
 
         # =================================================
-        # LABEL ERROR
+        # LABEL MENSAJES
         # =================================================
 
-        self.error_label = ctk.CTkLabel(
+        self.message_label = ctk.CTkLabel(
             self.center_frame,
             text="",
             font=(
@@ -181,8 +185,8 @@ class FrameLogin(ctk.CTkFrame):
             text_color="red"
         )
 
-        self.error_label.pack(
-            pady=8
+        self.message_label.pack(
+            pady=10
         )
 
         # =================================================
@@ -301,7 +305,7 @@ class FrameLogin(ctk.CTkFrame):
 
         self.register_button.pack_forget()
 
-        self.error_label.configure(
+        self.message_label.configure(
             text=""
         )
 
@@ -329,7 +333,7 @@ class FrameLogin(ctk.CTkFrame):
             pady=10
         )
 
-        self.error_label.configure(
+        self.message_label.configure(
             text=""
         )
 
@@ -357,8 +361,9 @@ class FrameLogin(ctk.CTkFrame):
 
         if username == "" or password == "":
 
-            self.error_label.configure(
-                text="Completa todos los campos"
+            self.message_label.configure(
+                text="Completa todos los campos",
+                text_color="red"
             )
 
             return
@@ -373,46 +378,79 @@ class FrameLogin(ctk.CTkFrame):
         )
 
         # =================================================
-        # ADMIN
+        # LOGIN ADMIN
         # =================================================
 
         if resultado == "admin":
 
-            self.error_label.configure(
-                text="Bienvenido administrador",
+            self.message_label.configure(
+                text=(
+                    "¡Sesión iniciada "
+                    "exitosamente, "
+                    "bienvenido Admin!"
+                ),
                 text_color="green"
             )
 
+            # =============================================
+            # ACTUALIZAR NAVBAR
+            # =============================================
+
             self.app.actualizar_navbar()
 
-            self.app.mostrar_frame(
-                "menu"
+            # =============================================
+            # IR AL MENÚ
+            # =============================================
+
+            self.after(
+                1500,
+                lambda:
+                self.app.mostrar_frame(
+                    "menu"
+                )
             )
 
         # =================================================
-        # CLIENTE
+        # LOGIN CLIENTE
         # =================================================
 
         elif resultado == "cliente":
 
-            self.error_label.configure(
-                text="Inicio de sesión exitoso",
+            self.message_label.configure(
+                text=(
+                    f"¡Sesión iniciada "
+                    f"exitosamente, "
+                    f"bienvenida "
+                    f"{config.USUARIO_ACTIVO.username}!"
+                ),
                 text_color="green"
             )
 
+            # =============================================
+            # ACTUALIZAR NAVBAR
+            # =============================================
+
             self.app.actualizar_navbar()
 
-            self.app.mostrar_frame(
-                "menu"
+            # =============================================
+            # IR AL MENÚ
+            # =============================================
+
+            self.after(
+                1500,
+                lambda:
+                self.app.mostrar_frame(
+                    "menu"
+                )
             )
 
         # =================================================
-        # ERROR
+        # ERROR LOGIN
         # =================================================
 
         else:
 
-            self.error_label.configure(
+            self.message_label.configure(
                 text=(
                     "Usuario o contraseña "
                     "incorrectos"
@@ -454,7 +492,7 @@ class FrameLogin(ctk.CTkFrame):
             or confirm_password == ""
         ):
 
-            self.error_label.configure(
+            self.message_label.configure(
                 text="Completa todos los campos",
                 text_color="red"
             )
@@ -467,7 +505,7 @@ class FrameLogin(ctk.CTkFrame):
 
         if password != confirm_password:
 
-            self.error_label.configure(
+            self.message_label.configure(
                 text=(
                     "Las contraseñas "
                     "no coinciden"
@@ -492,13 +530,17 @@ class FrameLogin(ctk.CTkFrame):
 
         if resultado:
 
-            self.error_label.configure(
+            self.message_label.configure(
                 text=(
                     "Cuenta creada "
                     "exitosamente"
                 ),
                 text_color="green"
             )
+
+            # =============================================
+            # LIMPIAR CAMPOS
+            # =============================================
 
             self.username_entry.delete(
                 0,
@@ -515,18 +557,22 @@ class FrameLogin(ctk.CTkFrame):
                 "end"
             )
 
+            # =============================================
+            # VOLVER LOGIN
+            # =============================================
+
             self.after(
                 1500,
                 self.ocultar_registro
             )
 
         # =================================================
-        # ERROR
+        # USUARIO EXISTENTE
         # =================================================
 
         else:
 
-            self.error_label.configure(
+            self.message_label.configure(
                 text=(
                     "Ese nombre de usuario "
                     "ya existe"
