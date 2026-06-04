@@ -2,25 +2,16 @@
 
 import customtkinter as ctk
 
+from PIL import Image
+
 from backend import auth_manager
-
-# =========================================================
-# IMPORTAR VISTAS
-# =========================================================
-
-# IMPORTANTE:
-# Estas clases deben existir después.
-# Por ahora puedes comentarlas si aún no las creas.
-
-# from gui.admin_view import VistaAdmin
-# from gui.user_view import VistaUsuario
 
 
 # =========================================================
 # CONFIGURACIÓN GENERAL
 # =========================================================
 
-ctk.set_appearance_mode("dark")
+ctk.set_appearance_mode("light")
 
 ctk.set_default_color_theme("blue")
 
@@ -41,33 +32,49 @@ class LoginWindow(ctk.CTk):
 
         self.title("OMCA - Login")
 
-        self.geometry("500x600")
+        self.geometry("500x650")
 
         self.resizable(False, False)
 
+        self.configure(
+            fg_color="#F8F4F0"
+        )
+
         # =================================================
-        # TÍTULO / LOGO
+        # LOGO PNG
         # =================================================
+
+        self.logo_image = ctk.CTkImage(
+            light_image=Image.open(
+                "assets/logo.png"
+            ),
+            size=(180, 180)
+        )
 
         self.logo_label = ctk.CTkLabel(
             self,
-            text="OMCA",
-            font=("Arial", 32, "bold")
+            text="",
+            image=self.logo_image
         )
 
-        self.logo_label.pack(pady=(40, 10))
+        self.logo_label.pack(
+            pady=(30, 10)
+        )
 
         # =================================================
-        # SUBTÍTULO
+        # TÍTULO
         # =================================================
 
         self.subtitle_label = ctk.CTkLabel(
             self,
             text="Iniciar Sesión",
-            font=("Arial", 22)
+            font=("Yu Gothic UI Semibold", 24),
+            text_color="#2B2B2B"
         )
 
-        self.subtitle_label.pack(pady=(10, 30))
+        self.subtitle_label.pack(
+            pady=(10, 30)
+        )
 
         # =================================================
         # ENTRY USUARIO
@@ -75,11 +82,15 @@ class LoginWindow(ctk.CTk):
 
         self.username_entry = ctk.CTkEntry(
             self,
-            width=300,
-            placeholder_text="Usuario"
+            width=320,
+            height=45,
+            placeholder_text="Usuario",
+            font=("Yu Gothic UI Semibold", 15)
         )
 
-        self.username_entry.pack(pady=10)
+        self.username_entry.pack(
+            pady=10
+        )
 
         # =================================================
         # ENTRY PASSWORD
@@ -87,12 +98,16 @@ class LoginWindow(ctk.CTk):
 
         self.password_entry = ctk.CTkEntry(
             self,
-            width=300,
+            width=320,
+            height=45,
             placeholder_text="Contraseña",
-            show="*"
+            show="*",
+            font=("Yu Gothic UI Semibold", 15)
         )
 
-        self.password_entry.pack(pady=10)
+        self.password_entry.pack(
+            pady=10
+        )
 
         # =================================================
         # LABEL ERROR
@@ -101,10 +116,13 @@ class LoginWindow(ctk.CTk):
         self.error_label = ctk.CTkLabel(
             self,
             text="",
+            font=("Yu Gothic UI Semibold", 14),
             text_color="red"
         )
 
-        self.error_label.pack(pady=5)
+        self.error_label.pack(
+            pady=5
+        )
 
         # =================================================
         # BOTÓN LOGIN
@@ -113,11 +131,14 @@ class LoginWindow(ctk.CTk):
         self.login_button = ctk.CTkButton(
             self,
             text="Iniciar Sesión",
-            width=300,
+            width=320,
+            height=40,
             command=self.iniciar_sesion
         )
 
-        self.login_button.pack(pady=20)
+        self.login_button.pack(
+            pady=20
+        )
 
         # =================================================
         # BOTÓN REGISTRO
@@ -126,13 +147,16 @@ class LoginWindow(ctk.CTk):
         self.register_button = ctk.CTkButton(
             self,
             text="¿No tienes cuenta? Regístrate",
-            width=300,
-            fg_color="gray25",
-            hover_color="gray35",
+            width=320,
+            height=40,
+            fg_color="#C7A17A",
+            hover_color="#B08B65",
             command=self.mostrar_registro
         )
 
-        self.register_button.pack(pady=10)
+        self.register_button.pack(
+            pady=10
+        )
 
         # =================================================
         # COMPONENTES REGISTRO
@@ -140,29 +164,33 @@ class LoginWindow(ctk.CTk):
 
         self.confirm_password_entry = ctk.CTkEntry(
             self,
-            width=300,
+            width=320,
+            height=45,
             placeholder_text="Confirmar contraseña",
-            show="*"
+            show="*",
+            font=("Yu Gothic UI Semibold", 15)
         )
 
         self.create_account_button = ctk.CTkButton(
             self,
             text="Crear Cuenta",
-            width=300,
+            width=320,
+            height=40,
             command=self.crear_cuenta
         )
 
         self.back_button = ctk.CTkButton(
             self,
             text="Volver al Login",
-            width=300,
-            fg_color="gray25",
-            hover_color="gray35",
+            width=320,
+            height=40,
+            fg_color="gray50",
+            hover_color="gray40",
             command=self.ocultar_registro
         )
 
     # =====================================================
-    # MOSTRAR PANEL REGISTRO
+    # MOSTRAR REGISTRO
     # =====================================================
 
     def mostrar_registro(self):
@@ -187,10 +215,12 @@ class LoginWindow(ctk.CTk):
 
         self.register_button.pack_forget()
 
-        self.error_label.configure(text="")
+        self.error_label.configure(
+            text=""
+        )
 
     # =====================================================
-    # OCULTAR PANEL REGISTRO
+    # OCULTAR REGISTRO
     # =====================================================
 
     def ocultar_registro(self):
@@ -213,7 +243,9 @@ class LoginWindow(ctk.CTk):
             pady=10
         )
 
-        self.error_label.configure(text="")
+        self.error_label.configure(
+            text=""
+        )
 
     # =====================================================
     # LOGIN
@@ -222,37 +254,47 @@ class LoginWindow(ctk.CTk):
     def iniciar_sesion(self):
 
         username = (
-            self.username_entry.get().strip()
+            self.username_entry
+            .get()
+            .strip()
         )
 
         password = (
-            self.password_entry.get().strip()
+            self.password_entry
+            .get()
+            .strip()
         )
 
-        # =============================================
+        # =================================================
         # VALIDAR CAMPOS
-        # =============================================
+        # =================================================
 
         if username == "" or password == "":
 
             self.error_label.configure(
-                text="Completa todos los campos"
+                text="Completa todos los campos",
+                text_color="red"
             )
 
             return
 
-        # =============================================
+        # =================================================
         # LOGIN
-        # =============================================
+        # =================================================
 
         resultado = auth_manager.login(
             username,
             password
         )
 
-        # =============================================
+        print(
+            "Resultado login:",
+            resultado
+        )
+
+        # =================================================
         # ADMIN
-        # =============================================
+        # =================================================
 
         if resultado == "admin":
 
@@ -262,12 +304,15 @@ class LoginWindow(ctk.CTk):
                 "Abrir VistaAdmin"
             )
 
+            # from gui.admin_view import VistaAdmin
+
             # vista = VistaAdmin()
+
             # vista.mainloop()
 
-        # =============================================
+        # =================================================
         # CLIENTE
-        # =============================================
+        # =================================================
 
         elif resultado == "cliente":
 
@@ -277,12 +322,15 @@ class LoginWindow(ctk.CTk):
                 "Abrir VistaUsuario"
             )
 
+            # from gui.user_view import VistaUsuario
+
             # vista = VistaUsuario()
+
             # vista.mainloop()
 
-        # =============================================
+        # =================================================
         # ERROR LOGIN
-        # =============================================
+        # =================================================
 
         else:
 
@@ -290,21 +338,26 @@ class LoginWindow(ctk.CTk):
                 text=(
                     "Usuario o contraseña "
                     "incorrectos"
-                )
+                ),
+                text_color="red"
             )
 
     # =====================================================
-    # REGISTRO
+    # CREAR CUENTA
     # =====================================================
 
     def crear_cuenta(self):
 
         username = (
-            self.username_entry.get().strip()
+            self.username_entry
+            .get()
+            .strip()
         )
 
         password = (
-            self.password_entry.get().strip()
+            self.password_entry
+            .get()
+            .strip()
         )
 
         confirm_password = (
@@ -313,9 +366,9 @@ class LoginWindow(ctk.CTk):
             .strip()
         )
 
-        # =============================================
-        # VALIDAR CAMPOS VACÍOS
-        # =============================================
+        # =================================================
+        # VALIDAR CAMPOS
+        # =================================================
 
         if (
             username == ""
@@ -324,14 +377,15 @@ class LoginWindow(ctk.CTk):
         ):
 
             self.error_label.configure(
-                text="Completa todos los campos"
+                text="Completa todos los campos",
+                text_color="red"
             )
 
             return
 
-        # =============================================
+        # =================================================
         # VALIDAR PASSWORDS
-        # =============================================
+        # =================================================
 
         if password != confirm_password:
 
@@ -339,52 +393,66 @@ class LoginWindow(ctk.CTk):
                 text=(
                     "Las contraseñas "
                     "no coinciden"
-                )
+                ),
+                text_color="red"
             )
 
             return
 
-        # =============================================
+        # =================================================
         # REGISTRAR
-        # =============================================
+        # =================================================
 
         resultado = auth_manager.registrar(
             username,
             password
         )
 
-        # =============================================
+        # =================================================
         # REGISTRO EXITOSO
-        # =============================================
+        # =================================================
 
         if resultado:
 
             self.error_label.configure(
-                text="Cuenta creada exitosamente",
+                text=(
+                    "Cuenta creada "
+                    "exitosamente"
+                ),
                 text_color="green"
             )
 
-            # Limpiar campos
+            # =============================================
+            # LIMPIAR CAMPOS
+            # =============================================
 
-            self.username_entry.delete(0, "end")
+            self.username_entry.delete(
+                0,
+                "end"
+            )
 
-            self.password_entry.delete(0, "end")
+            self.password_entry.delete(
+                0,
+                "end"
+            )
 
             self.confirm_password_entry.delete(
                 0,
                 "end"
             )
 
-            # Volver al login
+            # =============================================
+            # REGRESAR AL LOGIN
+            # =============================================
 
             self.after(
                 1500,
                 self.ocultar_registro
             )
 
-        # =============================================
-        # USUARIO EXISTENTE
-        # =============================================
+        # =================================================
+        # USUARIO YA EXISTE
+        # =================================================
 
         else:
 
