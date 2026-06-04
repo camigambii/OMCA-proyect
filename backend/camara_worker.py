@@ -2,7 +2,7 @@
 import cv2
 import numpy as np
 import mediapipe as mp
-from landmarks import FACE_ZONES
+from backend.landmarks import FACE_ZONES
 import threading
 import queue
 from PIL import Image
@@ -161,15 +161,16 @@ class CamaraWorker(threading.Thread):
                 
                 if results.multi_face_landmarks:
                     for face_landmarks in results.multi_face_landmarks:
-                        if "gloss" in self.categoria_actual:
-                            self.aplicarLabial(frame, face_landmarks, self.color_bgr, self.alpha_maquillaje)
-                        elif "rubor" in self.categoria_actual:
-                            self.aplicarRubor(frame, face_landmarks, self.color_bgr, self.alpha_maquillaje)
-                        elif "paleta" in self.categoria_actual:
-                            self.aplicarSombra(frame, face_landmarks, self.color_bgr, self.alpha_maquillaje)
-                        elif "bronzer" in self.categoria_actual:
-                            self.aplicarContour(frame, face_landmarks, self.color_bgr, self.alpha_maquillaje)    
-                    
+                        if self.categoria_actual is not None:
+                            if "gloss" in self.categoria_actual:
+                                self.aplicarLabial(frame, face_landmarks, self.color_bgr, self.alpha_maquillaje)
+                            elif "rubor" in self.categoria_actual:
+                                self.aplicarRubor(frame, face_landmarks, self.color_bgr, self.alpha_maquillaje)
+                            elif "paleta" in self.categoria_actual:
+                                self.aplicarSombra(frame, face_landmarks, self.color_bgr, self.alpha_maquillaje)
+                            elif "bronzer" in self.categoria_actual:
+                                self.aplicarContour(frame, face_landmarks, self.color_bgr, self.alpha_maquillaje)    
+                        
                     #PARA CUSTOMTKINTER
                     frame_rgb_final = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
                     imagen_pil = Image.fromarray(frame_rgb_final)

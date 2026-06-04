@@ -1,49 +1,49 @@
 id,nombre,categoria,precio,stock,ruta_imagen,color_r,color_g,color_b
-11104,bronzer buttermelt,bronzer,120.0,50,assets/productos/bronzer_O_01.png,43,66,151
-11107,bronzer tanned,bronzer,110.0,50,assets/productos/bronzer_P_01.png,104,117,169
-11204,gloss peach,gloss,120.0,50,assets/productos/gloss_O_01.png,56,57,0
-11207,gloss honey,gloss,250.0,50,assets/productos/gloss_P_01.png,53,37,24
-11304,paleta sunrise,paleta,250.0,50,assets/productos/paleta_O_01.png,53,36,13
-11307,paleta autumn,paleta,220.0,50,assets/productos/paleta_P_01.png,135,127,214
-11404,rubor peach fuzz,rubor,120.0,50,assets/productos/rubor_O_01.png,77,79,158
-11410,rubor apricot,rubor,250.0,50,assets/productos/rubor_P_01.png,141,135,221
-12105,bronzer cocoa,bronzer,450.0,50,assets/productos/bronzer_O_02.png,56,79,141
-12205,gloss sunset,gloss,500.0,47,assets/productos/gloss_O_02.png,60,66,5
-12208,gloss amber,gloss,480.0,50,assets/productos/gloss_P_02.png,89,96,23
-12305,paleta desert,paleta,550.0,50,assets/productos/paleta_O_02.png,210,215,241
-12405,rubor coral reef,rubor,500.0,50,assets/productos/rubor_O_02.png,131,141,204
-12411,rubor warm clay,rubor,550.0,50,assets/productos/rubor_P_02.png,91,114,220
-13106,bronzer woodish,bronzer,800.0,50,assets/productos/bronzer_O_03.png,47,82,139
-13108,bronzer golden,bronzer,900.0,50,assets/productos/bronzer_P_03.png,56,44,192
-13206,gloss golden hour,gloss,950.0,50,assets/productos/gloss_O_03.png,52,34,6
-13209,gloss bronze shimmer,gloss,750.0,50,assets/productos/gloss_P_03.png,142,169,219
-13306,paleta volcano,paleta,900.0,50,assets/productos/paleta_O_03.png,106,153,218
-13308,paleta sahara,paleta,750.0,50,assets/productos/paleta_P_03.png,243,210,234
-13406,rubor sunset glow,rubor,900.0,50,assets/productos/rubor_O_03.png,215,223,255
-13412,rubor terracotta,rubor,850.0,50,assets/productos/rubor_P_03.png,111,135,247
-21101,bronzer coffee,bronzer,100.0,50,assets/productos/bronzer_I_01.png,40,42,82
-21109,bronzer melted,bronzer,150.0,50,assets/productos/bronzer_V_01.png,148,171,224
-21201,gloss icy,gloss,150.0,50,assets/productos/gloss_I_01.png,25,6,128
-21210,gloss crystal,gloss,200.0,50,assets/productos/gloss_V_01.png,85,26,24
+11104,bronzer buttermelt,bronzer,120.0,50,assets/productos/bronzer_O_01.png,151,66,43
+11107,bronzer tanned,bronzer,110.0,50,assets/productos/bronzer_P_01.png,169,117,104
+11204,gloss peach,gloss,120.0,50,assets/productos/gloss_O_01.png,0,57,56
+11207,gloss honey,gloss,250.0,48,assets/productos/gloss_P_01.png,24,37,53
+11304,paleta sunrise,paleta,250.0,50,assets/productos/paleta_O_01.png,13,36,53
+11307,paleta autumn,paleta,220.0,50,assets/productos/paleta_P_01.png,214,127,135
+11404,rubor peach fuzz,rubor,120.0,50,assets/productos/rubor_O_01.png,158,79,77
+11410,rubor apricot,rubor,250.0,49,assets/productos/rubor_P_01.png,221,135,141
+12105,bronzer cocoa,bronzer,450.0,48,assets/productos/bronzer_O_02.png,141,79,56
+12205,gloss sunset,gloss,500.0,45,assets/productos/gloss_O_02.png,5,66,60
+12208,gloss amber,gloss,480.0,50,assets/productos/gloss_P_02.png,23,96,89
+12305,paleta desert,paleta,550.0,50,assets/productos/paleta_O_02.png,241,215,210
+12405,rubor coral reef,rubor,500.0,50,assets/productos/rubor_O_02.png,204,141,131
+12411,rubor warm clay,rubor,550.0,50,assets/productos/rubor_P_02.png,220,114,91
+13106,bronzer woodish,bronzer,800.0,50,assets/productos/bronzer_O_03.png,139,82,47
+13108,bronzer golden,bronzer,900.0,50,assets/productos/bronzer_P_03.png,192,44,56
+13206,gloss golden hour,gloss,950.0,50,assets/productos/gloss_O_03.png,6,34,52
+13209,gloss bronze shimmer,gloss,750.0,50,assets/productos/gloss_P_03.png,219,169,142
+13306,paleta volcano,paleta,900.0,50,assets/productos/paleta_O_03.png,218,153,106
+13308,paleta sahara,paleta,750.0,50,assets/productos/paleta_P_03.png,234,210,243
+13406,rubor sunset glow,rubor,900.0,50,assets/productos/rubor_O_03.png,255,223,215
+13412,rubor terracotta,rubor,850.0,50,assets/productos/rubor_P_03.png,247,135,111
+21101,bronzer coffee,bronzer,100.0,50,assets/productos/bronzer_I_01.png,82,42,40
+21109,bronzer melted,bronzer,150.0,50,assets/productos/bronzer_V_01.png,224,171,148
+21201,gloss icy,gloss,150.0,50,assets/productos/gloss_I_01.png,128,6,25
+21210,gloss crystal,gloss,200.0,50,assets/productos/gloss_V_01.png,24,26,85
 21301,paleta 7rings,paleta,110.0,50,assets/productos/gloss_I_01.png,221,221,221
-21309,paleta ocean,paleta,180.0,50,assets/productos/paleta_V_01.png,181,133,171
-21401,rubor pink blast,rubor,150.0,50,assets/productos/rubor_I_01.png,111,25,209
-21407,rubor mauve,rubor,180.0,50,assets/productos/rubor_V_01.png,74,30,154
-22102,bronzer sunkissed,bronzer,550.0,50,assets/productos/bronzer_I_02.png,42,61,104
-22110,bronzer ariana,bronzer,550.0,50,assets/productos/bronzer_V_02.png,118,142,188
-22202,gloss frozen berry,gloss,450.0,50,assets/productos/gloss_I_02.png,37,9,87
-22211,gloss mauve,gloss,550.0,50,assets/productos/gloss_V_02.png,217,224,176
-22302,paleta moonlight,paleta,450.0,50,assets/productos/gloss_I_02.png,65,23,0
-22310,paleta amethyst,paleta,480.0,50,assets/productos/paleta_V_02.png,218,224,173
-22402,rubor cold rose,rubor,450.0,50,assets/productos/rubor_I_02.png,45,52,175
-22408,rubor winter flush,rubor,480.0,50,assets/productos/rubor_V_02.png,156,125,223
-23103,bronzer 2broke,bronzer,700.0,50,assets/productos/bronzer_I_03.png,58,66,119
-23203,gloss diamond,gloss,800.0,50,assets/productos/gloss_I_03.png,180,137,237
-23212,gloss platinum,gloss,1050.0,50,assets/productos/gloss_V_03.png,195,196,250
-23303,paleta midnight,paleta,850.0,50,assets/productos/gloss_I_03.png,99,1,186
-23311,paleta galaxy,paleta,950.0,50,assets/productos/paleta_V_03.png,213,216,243
-23403,rubor frozen berry,rubor,800.0,50,assets/productos/rubor_I_03.png,167,118,237
-23409,rubor luxury plum,rubor,950.0,50,assets/productos/rubor_V_03.png,218,220,249
+21309,paleta ocean,paleta,180.0,50,assets/productos/paleta_V_01.png,171,133,181
+21401,rubor pink blast,rubor,150.0,50,assets/productos/rubor_I_01.png,209,25,111
+21407,rubor mauve,rubor,180.0,50,assets/productos/rubor_V_01.png,154,30,74
+22102,bronzer sunkissed,bronzer,550.0,50,assets/productos/bronzer_I_02.png,104,61,42
+22110,bronzer ariana,bronzer,550.0,50,assets/productos/bronzer_V_02.png,188,142,118
+22202,gloss frozen berry,gloss,450.0,50,assets/productos/gloss_I_02.png,87,9,37
+22211,gloss mauve,gloss,550.0,50,assets/productos/gloss_V_02.png,176,224,217
+22302,paleta moonlight,paleta,450.0,50,assets/productos/gloss_I_02.png,0,23,65
+22310,paleta amethyst,paleta,480.0,50,assets/productos/paleta_V_02.png,173,224,218
+22402,rubor cold rose,rubor,450.0,50,assets/productos/rubor_I_02.png,175,52,45
+22408,rubor winter flush,rubor,480.0,50,assets/productos/rubor_V_02.png,223,125,156
+23103,bronzer 2broke,bronzer,700.0,50,assets/productos/bronzer_I_03.png,119,66,58
+23203,gloss diamond,gloss,800.0,50,assets/productos/gloss_I_03.png,237,137,180
+23212,gloss platinum,gloss,1050.0,50,assets/productos/gloss_V_03.png,250,196,195
+23303,paleta midnight,paleta,850.0,50,assets/productos/gloss_I_03.png,186,1,99
+23311,paleta galaxy,paleta,950.0,50,assets/productos/paleta_V_03.png,243,216,213
+23403,rubor frozen berry,rubor,800.0,50,assets/productos/rubor_I_03.png,237,118,167
+23409,rubor luxury plum,rubor,950.0,50,assets/productos/rubor_V_03.png,249,220,218
 31501,brochas MORPHE,accesorios,400.0,50,assets/productos/BROCHA01.png,0,0,0
 32502,brochas REAL,accesorios,600.0,50,assets/productos/BROCHA02.png,0,0,0
 33503,brochas BEAUTY,accesorios,900.0,50,assets/productos/BROCHA03.png,0,0,0
