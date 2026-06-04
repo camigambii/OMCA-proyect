@@ -1,4 +1,4 @@
-from estructuras.hash_table import Usuario
+from estructuras.tabla_hash import Usuario
 
 import config
 

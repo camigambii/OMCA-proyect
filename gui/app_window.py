@@ -11,7 +11,7 @@ from gui.frame_gloss    import FrameGloss
 # from gui.frames.frame_paletas  import FramePaletas
 # from gui.frames.frame_bronzer  import FrameBronzer
 # from gui.frames.frame_asesoria import FrameAsesoria
-# from gui.frames.frame_login    import FrameLogin
+from gui.frame_login import FrameLogin
 # from gui.frames.frame_admin    import FrameAdmin
 
 ANCHO  = 1100
@@ -192,7 +192,7 @@ class AppWindow(ctk.CTk):
             # "paletas":  FramePaletas,
             # "bronzer":  FrameBronzer,
             # "asesoria": FrameAsesoria,
-            # "login":    FrameLogin,
+            "login":    FrameLogin,
             # "admin":    FrameAdmin,
         }
 

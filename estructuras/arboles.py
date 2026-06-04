@@ -1,43 +1,5 @@
 class Producto:
-    """
-    Representa un producto del inventario de maquillaje.
 
-    Formato:
-        [C][G][T][NN]
-
-    Ejemplo:
-        31501
-
-    C -> colorimetría:
-        1 = cálido
-        2 = frío
-        3 = universal
-
-    G -> gama:
-        1 = barato     ($100 - $300)
-        2 = intermedio ($400 - $600)
-        3 = caro       ($700 - $1100)
-
-    T -> tipo/categoría interna:
-        1 = bronzer
-        2 = gloss
-        3 = paleta
-        4 = rubor
-        5 = producto universal
-
-    NN -> consecutivo:
-        01, 02, 03...
-
-    EJEMPLO
-  
-
-    31501
-
-    3 -> universal
-    1 -> barato
-    5 -> producto universal
-    01 -> consecutivo
-    """
 
     COLORIMETRIAS = {
         1: "calido",
